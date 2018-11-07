@@ -23,6 +23,7 @@ describe('generateGif', () => {
 		expect(message.createdAt).toBeA('number');
 	})
 });
+
 // describe('generateLocationMessage', () => {
 //   it('should generate correct location object', () => {
 //     var from = 'Deb';
