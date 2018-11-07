@@ -19,12 +19,13 @@ io.on('connection', (socket) => {
   console.log('New user connected');
   
   socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
-  socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined.`));
+  socket.broadcast.emit('newMessage', generateMessage('Admin', 'has joined.'));
      
 
-  socket.on('createMessage',(message)=>{
+  socket.on('createMessage',(message,callback)=>{
     console.log('createEmail :',message);
     io.emit('newMessage',generateMessage(message.from,message.text));
+    callback();
     //   from:message.from,
     //   text:message.text,
     //   createAt:new Date().getTime()
